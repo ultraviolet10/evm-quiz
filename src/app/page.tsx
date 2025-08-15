@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import App from "./app";
-import { APP_NAME, APP_DESCRIPTION, APP_OG_IMAGE_URL } from "~/lib/constants";
-import { getFrameEmbedMetadata } from "~/lib/utils";
+import HomePage from "~/components/HomePage";
+import { APP_NAME, APP_DESCRIPTION } from "~/lib/constants";
 
 export const revalidate = 300;
 
@@ -11,14 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: APP_NAME,
       description: APP_DESCRIPTION,
-      images: [APP_OG_IMAGE_URL],
-    },
-    other: {
-      "fc:frame": JSON.stringify(getFrameEmbedMetadata()),
     },
   };
 }
 
 export default function Home() {
-  return (<App />);
+  return <HomePage title={APP_NAME} />;
 }
